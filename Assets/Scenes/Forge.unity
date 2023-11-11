@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 321422613}
   - component: {fileID: 321422614}
   m_Layer: 5
-  m_Name: Alloy
+  m_Name: AlloyView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,6 +463,52 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &376127626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 376127627}
+  - component: {fileID: 376127628}
+  m_Layer: 0
+  m_Name: ForgeController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &376127627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376127626}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &376127628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376127626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e5b92bb637f8024e9cce5b41c57b47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templateView: {fileID: 1461643955}
+  alloyView: {fileID: 321422614}
 --- !u!1 &792624006
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,7 +802,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 972988155}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 376127628}
+        m_TargetAssemblyTypeName: ForgeController, Assembly-CSharp
+        m_MethodName: ToggleView
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &972988155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -808,7 +866,7 @@ GameObject:
   - component: {fileID: 1096174502}
   - component: {fileID: 1096174501}
   m_Layer: 5
-  m_Name: Switch vie
+  m_Name: Switch view
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -877,7 +935,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1096174502}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 376127628}
+        m_TargetAssemblyTypeName: ForgeController, Assembly-CSharp
+        m_MethodName: ToggleView
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1096174502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1197,7 +1267,7 @@ GameObject:
   - component: {fileID: 1461643954}
   - component: {fileID: 1461643955}
   m_Layer: 5
-  m_Name: Template
+  m_Name: TemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1506,5 +1576,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1782792374}
   - {fileID: 251500208}
+  - {fileID: 376127627}
   - {fileID: 2131491037}
   - {fileID: 1780323749}
