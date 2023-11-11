@@ -3,32 +3,50 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using static PersistentData;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ForgeController : MonoBehaviour
 {
+    public CanvasGroup forgeScreen;
+    public Image startForgePanel;
+    public Image startRunPanel;
+    public PlayerController playerController;
+    public Transform forge;
+    public Transform timeBox;
+    public float minDist;
 
     public CanvasGroup templateView;
     public WeaponButton weaponButton;
     public TextMeshProUGUI templateLabel;
     public TextMeshProUGUI templateDescription;
+    public Transform weaponPreviewParent;
+    public MeshRenderer weaponPreview;
 
     public CanvasGroup alloyView;
     public MaterialButton materialButton;
     public RectTransform alloyListView;
+    public TextMeshProUGUI ironLabel;
     public List<PersistentData.InventoryMaterial> weaponMaterials;
     public PersistentData.InventoryMaterial ironInfo;
 
     public WeaponAttributes curWeaponAttributes;
+    public TextMeshProUGUI speedText;
+    public TextMeshProUGUI damageText;
+    public TextMeshProUGUI defenseText;
+    public TextMeshProUGUI recoverabilityText;
 
     public PersistentData persistentData;
     public int yStep;
     bool firstTime = true;
+    bool forged = false;
+    bool isForging = false;
     // Start is called before the first frame update
     void Start()
     {
         persistentData = PersistentData.GetPersistentData();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -65,7 +83,7 @@ public class ForgeController : MonoBehaviour
             }
 
             x = 155;
-            y = -25;
+            y = -90;
             int dx = 0;
 
             var rectPos = alloyListView.localPosition;
@@ -90,6 +108,32 @@ public class ForgeController : MonoBehaviour
 
             firstTime = false;
         }
+
+        if (Vector3.Distance(playerController.transform.position, timeBox.position) < minDist&&forged&&!isForging)
+        {
+            startRunPanel.gameObject.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SceneManager.LoadScene("Gameplay");
+            }
+        }
+        else
+        {
+            startRunPanel.gameObject.SetActive(false);
+        }
+        if (Vector3.Distance(playerController.transform.position, forge.position) < minDist&&!isForging)
+        {
+            startForgePanel.gameObject.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                forgeScreen.gameObject.SetActive(true);
+                isForging = true;
+            }
+        }
+        else
+        {
+            startForgePanel.gameObject.SetActive(false);
+        }
     }
 
 
@@ -101,7 +145,22 @@ public class ForgeController : MonoBehaviour
     public void Forge()
     {
         UpdateWeaponStats();
+        foreach(var weaponMaterial in weaponMaterials)
+        {
+            for(int i = 0; i<persistentData.inventoryMaterials.Count;i++ )
+            {
+                var inventoryMaterial = persistentData.inventoryMaterials[i];
+                if (weaponMaterial.Material == inventoryMaterial.Material)
+                {
+                    inventoryMaterial.count -= weaponMaterial.count;
+                }
+                persistentData.inventoryMaterials[i] = inventoryMaterial;
+            }
+        }
         persistentData.equippedWeaponAttributes = curWeaponAttributes;
+        forgeScreen.gameObject.SetActive(false);
+        forged = true;
+        isForging = false;
     }
     public void UpdateWeaponStats()
     {
@@ -121,6 +180,28 @@ public class ForgeController : MonoBehaviour
         curWeaponAttributes.speed = modifiedSpeed;
         curWeaponAttributes.defense = modifiedDefense;
         curWeaponAttributes.recoverability = modifiedRecoverability;
+
         //update the model's color as well when ready
+        UpdateVisuals();
+    }
+
+    public void UpdateVisuals()
+    {
+        if (weaponPreview != null)
+        {
+            Destroy(weaponPreview.gameObject);
+        }
+        var newModel = Instantiate(persistentData.weaponTemplates[(int)persistentData.equippedWeapon].weaponTemplate.model,weaponPreviewParent);
+        weaponPreview=newModel.GetComponent<MeshRenderer>();
+        weaponPreview.material = ironInfo.Material.visualMaterial;
+        foreach (var material in weaponMaterials)
+        {
+            weaponPreview.material.Lerp(weaponPreview.material, material.Material.visualMaterial, material.count / 100.0f);
+        }
+
+        damageText.text = "Damage: " + curWeaponAttributes.damage;
+        speedText.text = "Speed: " + curWeaponAttributes.speed;
+        defenseText.text = "Defense: " + curWeaponAttributes.defense;
+        recoverabilityText.text = "Recoverability: " + curWeaponAttributes.recoverability;
     }
 }

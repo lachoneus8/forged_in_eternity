@@ -15,4 +15,4 @@ MonoBehaviour:
   templateName: Dagger
   description: STABBY AND THROW
   weaponType: 0
-  model: {fileID: 0}
+  model: {fileID: 4344787606137278875, guid: 5ef85c978689b7d439507360073a0635, type: 3}

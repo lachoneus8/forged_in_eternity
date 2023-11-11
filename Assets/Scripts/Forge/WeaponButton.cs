@@ -21,5 +21,7 @@ public class WeaponButton : MonoBehaviour
         forgeController.templateLabel.text = weaponInfo.name;
         forgeController.templateDescription.text = weaponInfo.description;
         forgeController.persistentData.equippedWeapon = weapon;
+        //renderer stuff
+        forgeController.UpdateVisuals();
     }
 }

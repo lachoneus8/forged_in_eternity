@@ -45,6 +45,7 @@ public class MaterialButton : MonoBehaviour
     public void UpdateText()
     {
         countLabel.text = forgeController.weaponMaterials[(int)material].count+"/" + maxCount;
+        forgeController.ironLabel.text = forgeController.ironInfo.count+" iron";
         forgeController.UpdateWeaponStats();
     }
 }
