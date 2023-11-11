@@ -11,6 +11,7 @@ public class PersistentData : MonoBehaviour
     public List<PlayerWeaponTemplate> weaponTemplates;
     public List<InventoryMaterial> inventoryMaterials;
     public WeaponTemplate equippedWeapon;
+    public WeaponAttributes equippedWeaponAttributes;
 
     public static PersistentData GetPersistentData()
     {
@@ -42,7 +43,6 @@ public class PersistentData : MonoBehaviour
     }
     public enum Material
     {
-        iron,
         steel,
         draconium,
         mithril,
@@ -59,6 +59,11 @@ public class PersistentData : MonoBehaviour
     {
         public MaterialInfo Material;
         public int count;
+        public InventoryMaterial(MaterialInfo baseInfo)
+        {
+            count = 0;
+            Material = baseInfo;
+        }
     }
     [Serializable]
     public struct PlayerWeaponTemplate

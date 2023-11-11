@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static PersistentData;
 
 public class ForgeController : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class ForgeController : MonoBehaviour
     public TextMeshProUGUI templateDescription;
 
     public CanvasGroup alloyView;
+    public MaterialButton materialButton;
+    public RectTransform alloyListView;
+    public List<PersistentData.InventoryMaterial> weaponMaterials;
+    public PersistentData.InventoryMaterial ironInfo;
+
+    public WeaponAttributes curWeaponAttributes;
+
     public PersistentData persistentData;
     public int yStep;
     bool firstTime = true;
@@ -30,8 +38,17 @@ public class ForgeController : MonoBehaviour
             persistentData = PersistentData.GetPersistentData();
             return;
         }
-        if(firstTime)
+        else if(firstTime)
         {
+            weaponMaterials = new List<PersistentData.InventoryMaterial>();
+            foreach(var material in persistentData.inventoryMaterials)
+            {
+                if (material.count > 0)
+                {
+                    weaponMaterials.Add(new PersistentData.InventoryMaterial(material.Material));
+                }
+            }
+
             int x = 170;
             int y = 190;
             for(int i=0; i<persistentData.weaponTemplates.Count; i++)
@@ -46,6 +63,31 @@ public class ForgeController : MonoBehaviour
                     y -= yStep;
                 }
             }
+
+            x = 155;
+            y = -25;
+            int dx = 0;
+
+            var rectPos = alloyListView.localPosition;
+            alloyListView.sizeDelta = new Vector2(alloyListView.sizeDelta.x, (weaponMaterials.Count*75));
+            //alloyListView.localPosition = new Vector3(rectPos.x, startPosY - ((startHeight - alloyListView.sizeDelta.y) * 0.5f), rectPos.z);
+
+            foreach (var material in persistentData.inventoryMaterials)
+            {
+                if (material.count > 0)
+                {
+                    var newButton = Instantiate(materialButton, alloyListView);
+                    newButton.transform.localPosition = new Vector2(x, y);
+                    newButton.material = (PersistentData.Material)dx;
+                    newButton.nameLabel.text = material.Material.materialName;
+                    newButton.background.color = material.Material.visualMaterial.color;
+                    newButton.maxCount = material.count;
+
+                    y -= yStep;
+                    dx++;
+                }
+            }
+
             firstTime = false;
         }
     }
@@ -55,5 +97,30 @@ public class ForgeController : MonoBehaviour
     {
         templateView.gameObject.SetActive(!templateView.gameObject.activeSelf);
         alloyView.gameObject.SetActive(!templateView.gameObject.activeSelf);
+    }
+    public void Forge()
+    {
+        UpdateWeaponStats();
+        persistentData.equippedWeaponAttributes = curWeaponAttributes;
+    }
+    public void UpdateWeaponStats()
+    {
+        //update all attributes
+        float modifiedDamage = ironInfo.Material.damage * ironInfo.count / 100.0f;
+        float modifiedSpeed = ironInfo.Material.speed * ironInfo.count / 100.0f;
+        float modifiedRecoverability = ironInfo.Material.recoverability * ironInfo.count / 100.0f;
+        float modifiedDefense = ironInfo.Material.defense * ironInfo.count / 100.0f;
+        foreach (var material in weaponMaterials)
+        {
+            modifiedDamage += material.Material.damage * material.count / 100.0f;
+            modifiedSpeed += material.Material.speed * material.count / 100.0f;
+            modifiedRecoverability += material.Material.recoverability * material.count / 100.0f;
+            modifiedDefense += material.Material.defense * material.count / 100.0f;
+        }
+        curWeaponAttributes.damage= modifiedDamage;
+        curWeaponAttributes.speed = modifiedSpeed;
+        curWeaponAttributes.defense = modifiedDefense;
+        curWeaponAttributes.recoverability = modifiedRecoverability;
+        //update the model's color as well when ready
     }
 }

@@ -166,10 +166,8 @@ MonoBehaviour:
   - unlocked: 0
     weaponTemplate: {fileID: 11400000, guid: a1172da5d4944e240a6bcb4def79b7e9, type: 2}
   inventoryMaterials:
-  - Material: {fileID: 11400000, guid: b521a0b105736aa4dab88c25a4610579, type: 2}
-    count: 0
   - Material: {fileID: 11400000, guid: 3ce7a60ad1fb268498af64d88c137665, type: 2}
-    count: 0
+    count: 100
   - Material: {fileID: 11400000, guid: 13a857a6a3622524a82f2e6a8ba7d2b4, type: 2}
     count: 0
   - Material: {fileID: 11400000, guid: 7dd13b65d51f58b4286764c142c679ec, type: 2}
@@ -179,7 +177,7 @@ MonoBehaviour:
   - Material: {fileID: 11400000, guid: 5e5df304f357b344fbdf051faf6d8377, type: 2}
     count: 0
   - Material: {fileID: 11400000, guid: c6c87156de16caa4e86122fb7eb29fdc, type: 2}
-    count: 0
+    count: 100
   - Material: {fileID: 11400000, guid: c3d14e118060bb64282a94873198256b, type: 2}
     count: 0
   - Material: {fileID: 11400000, guid: 5b4e91584ffee9242a20da26e5b85d20, type: 2}
@@ -189,6 +187,7 @@ MonoBehaviour:
   - Material: {fileID: 11400000, guid: dec6258a6d7874845839aa8103fd75d0, type: 2}
     count: 0
   equippedWeapon: 0
+  equippedWeaponAttributes: 01000000010000000100000001000000
 --- !u!4 &105081049
 Transform:
   m_ObjectHideFlags: 0
