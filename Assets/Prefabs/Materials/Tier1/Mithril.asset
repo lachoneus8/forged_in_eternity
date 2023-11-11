@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefa97e4248f6a440bc5957f7bc35922, type: 3}
   m_Name: Mithril
   m_EditorClassIdentifier: 
+  materialName: Mithril
   damage: 2
   speed: 3
   defense: 2
   recoverability: 2
+  visualMaterial: {fileID: 2100000, guid: e00128059fe05f043853456e779aa589, type: 2}

@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eefa97e4248f6a440bc5957f7bc35922, type: 3}
-  m_Name: Electrum
+  m_Script: {fileID: 11500000, guid: d0ddfb0fb8b754b48ae1db836602d3cc, type: 3}
+  m_Name: Rapier
   m_EditorClassIdentifier: 
-  damage: 2
-  speed: 2
-  defense: 2
-  recoverability: 3
+  templateName: Rapier
+  description: 
+  weaponType: 3
+  model: {fileID: 0}

@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefa97e4248f6a440bc5957f7bc35922, type: 3}
   m_Name: Adamantium
   m_EditorClassIdentifier: 
+  materialName: Adamantium
   damage: 2
   speed: 2
   defense: 3
   recoverability: 2
+  visualMaterial: {fileID: 2100000, guid: b28540d6ea8a9dd418175fe01993d565, type: 2}

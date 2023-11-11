@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="MaterialInfo", menuName ="Forged/MaterialInfo")]
 public class MaterialInfo : ScriptableObject
 {
+    public string materialName;
     public int damage;
     public int speed;
     public int defense;

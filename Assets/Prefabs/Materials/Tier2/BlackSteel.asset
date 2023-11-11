@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefa97e4248f6a440bc5957f7bc35922, type: 3}
   m_Name: BlackSteel
   m_EditorClassIdentifier: 
+  materialName: Blacksteel
   damage: 3
   speed: 3
   defense: 3
   recoverability: 3
+  visualMaterial: {fileID: 2100000, guid: a8dcfde6364b0914f9a49f88ceeca7ff, type: 2}

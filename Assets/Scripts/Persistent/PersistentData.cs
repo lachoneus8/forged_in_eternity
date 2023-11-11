@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,9 @@ public class PersistentData : MonoBehaviour
 {
     private static bool isLoading = false;
     private static bool markedDontDestroy = false;
+    public List<PlayerWeaponTemplate> weaponTemplates;
+    public List<InventoryMaterial> inventoryMaterials;
+    public WeaponTemplate equippedWeapon;
 
     public static PersistentData GetPersistentData()
     {
@@ -25,5 +29,41 @@ public class PersistentData : MonoBehaviour
         }
 
         return persistentData;
+    }
+
+    public enum WeaponTemplate
+    {
+        dagger,
+        longsword,
+        greatAxe,
+        rapier,
+        halberd,
+        handAxe
+    }
+    public enum Material
+    {
+        iron,
+        steel,
+        draconium,
+        mithril,
+        aquanite,
+        adamantium,
+        blacksteel,
+        fireDraconium,
+        airMithril,
+        waterAquanite,
+        earthAdamantium
+    }
+    [Serializable]
+    public struct InventoryMaterial
+    {
+        public MaterialInfo Material;
+        public int count;
+    }
+    [Serializable]
+    public struct PlayerWeaponTemplate
+    {
+        public bool unlocked;
+        public WeaponTemplateInfo weaponTemplate;
     }
 }

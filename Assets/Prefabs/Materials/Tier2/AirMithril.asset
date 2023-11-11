@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefa97e4248f6a440bc5957f7bc35922, type: 3}
   m_Name: AirMithril
   m_EditorClassIdentifier: 
+  materialName: Air Mithril
   damage: 3
   speed: 4
   defense: 3
   recoverability: 3
+  visualMaterial: {fileID: 2100000, guid: abbdbb26ee2368044905a63ed5e985e2, type: 2}

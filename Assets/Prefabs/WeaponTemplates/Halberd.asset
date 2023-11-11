@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eefa97e4248f6a440bc5957f7bc35922, type: 3}
-  m_Name: WaterElectrum
+  m_Script: {fileID: 11500000, guid: d0ddfb0fb8b754b48ae1db836602d3cc, type: 3}
+  m_Name: Halberd
   m_EditorClassIdentifier: 
-  damage: 3
-  speed: 3
-  defense: 3
-  recoverability: 4
+  templateName: Halberd
+  description: 
+  weaponType: 4
+  model: {fileID: 0}

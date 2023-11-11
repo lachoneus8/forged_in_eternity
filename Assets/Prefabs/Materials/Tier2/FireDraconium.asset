@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefa97e4248f6a440bc5957f7bc35922, type: 3}
   m_Name: FireDraconium
   m_EditorClassIdentifier: 
+  materialName: Fire Draconium
   damage: 4
   speed: 3
   defense: 3
   recoverability: 3
+  visualMaterial: {fileID: 2100000, guid: 70d74832fe15b6e4faa4377c3e7608d3, type: 2}
