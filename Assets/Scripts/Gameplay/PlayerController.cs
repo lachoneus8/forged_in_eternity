@@ -31,5 +31,10 @@ public class PlayerController : MonoBehaviour
             lookAt.y = 1;
             gameObject.transform.LookAt(lookAt);
         }
+
+        // Correct x rotation
+        var curRot = transform.rotation.eulerAngles.y;
+        var updatedRot = new Vector3(0, curRot, 0);
+        transform.rotation = Quaternion.Euler(updatedRot);
     }
 }
