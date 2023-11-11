@@ -12,6 +12,7 @@ public class PersistentData : MonoBehaviour
     public List<InventoryMaterial> inventoryMaterials;
     public WeaponTemplate equippedWeapon;
     public WeaponAttributes equippedWeaponAttributes;
+    public Zone.ZoneChoice curZone = Zone.ZoneChoice.Zone1;
 
     public static PersistentData GetPersistentData()
     {
