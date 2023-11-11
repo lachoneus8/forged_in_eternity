@@ -9,4 +9,5 @@ public class MaterialInfo : ScriptableObject
     public int speed;
     public int defense;
     public int recoverability;
+    public Material visualMaterial;
 }
