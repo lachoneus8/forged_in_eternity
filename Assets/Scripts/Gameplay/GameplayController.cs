@@ -329,7 +329,10 @@ public class GameplayController : MonoBehaviour
             position.y = prefab.transform.position.y;
 
             var spawnedGameObject = Instantiate(prefab, position, Quaternion.identity, spawnableParent);
-            var spawnable = GetComponent<ASpawnable>();
+            // Hack to get at specific different spawnable types
+            ASpawnable spawnable = spawnedGameObject.GetComponent<Template>();
+            if (spawnable == null) spawnable = spawnedGameObject.GetComponent<GatheringPoint>();
+            if (spawnable == null) spawnable = spawnedGameObject.GetComponent<Enemy>();
             DisplayText(spawnable.GetSpawnText(), spawnable.GetSpawnTextColor(), 5f, spawnedGameObject);
 
             spawnedList.Add(spawnedGameObject);
