@@ -33,6 +33,8 @@ public class GameplayController : MonoBehaviour
     public TMP_Text defenseText;
     public TMP_Text recoverText;
 
+    public TMP_Text healthText;
+
     private PersistentData persistentData;
     private Zone curZone;
 
@@ -70,6 +72,8 @@ public class GameplayController : MonoBehaviour
             }
             return;
         }
+
+        healthText.text = "Health: " + persistentData.health + "/100";
 
         var diff = curRoom.exitPoint.transform.position - player.transform.position;
         if (diff.magnitude < distanceToExit && CanLeaveRoom())
