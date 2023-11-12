@@ -8,8 +8,12 @@ public class Projectile : MonoBehaviour
     public float damage;
     public Collider hitCollider;
     public bool targetPlayers;
-    
+    PersistentData persistent;
 
+    private void Start()
+    {
+        persistent = FindObjectOfType<PersistentData>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +27,7 @@ public class Projectile : MonoBehaviour
             var player=collision.gameObject.GetComponent<PlayerController>();
             if(player != null)
             {
-
+                persistent.PlayerDamage(damage);
             }
         }
     }

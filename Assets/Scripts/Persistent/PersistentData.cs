@@ -13,6 +13,7 @@ public class PersistentData : MonoBehaviour
     public WeaponTemplate equippedWeapon;
     public WeaponAttributes equippedWeaponAttributes;
     public Zone.ZoneChoice curZone = Zone.ZoneChoice.Zone1;
+    public float health;
 
     public static PersistentData GetPersistentData()
     {
@@ -71,5 +72,10 @@ public class PersistentData : MonoBehaviour
     {
         public bool unlocked;
         public WeaponTemplateInfo weaponTemplate;
+    }
+
+    public void PlayerDamage(float damage)
+    {
+        health -= damage * (1 - equippedWeaponAttributes.defense);
     }
 }

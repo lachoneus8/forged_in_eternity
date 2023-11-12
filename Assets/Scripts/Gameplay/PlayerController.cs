@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
 
     public bool skipUpdate = false;
 
-    public float health;
 
     private int layerAsMask;
 
