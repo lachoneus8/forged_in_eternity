@@ -12,13 +12,18 @@ public class MaterialButton : MonoBehaviour
     public TextMeshProUGUI countLabel;
     public Image background;
     ForgeController forgeController;
+    public List<Button> buttons;
     public int maxCount;
 
     private void Start()
     {
         forgeController = FindObjectOfType<ForgeController>();
 
-        UpdateText();
+        if (material != PersistentData.Material.iron)
+        {
+            UpdateText();
+        }
+
     }
 
     public void Increment(int amt)

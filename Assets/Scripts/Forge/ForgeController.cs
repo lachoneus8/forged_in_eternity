@@ -93,12 +93,24 @@ public class ForgeController : MonoBehaviour
             }
 
             x = 155;
-            y = -90;
+            y = -45;
             int dx = 0;
+            alloyListView.sizeDelta = new Vector2(alloyListView.sizeDelta.x, (weaponMaterials.Count+1)*75);
 
-            var rectPos = alloyListView.localPosition;
-            alloyListView.sizeDelta = new Vector2(alloyListView.sizeDelta.x, Math.Max(weaponMaterials.Count*75,75));
-            //alloyListView.localPosition = new Vector3(rectPos.x, startPosY - ((startHeight - alloyListView.sizeDelta.y) * 0.5f), rectPos.z);
+            var ironButton = Instantiate(materialButton, alloyListView);
+            ironButton.transform.localPosition = new Vector2(x, y);
+            ironButton.material = PersistentData.Material.iron;
+            ironButton.nameLabel.text = ironInfo.Material.materialName;
+            ironButton.background.color = ironInfo.Material.visualMaterial.color;
+            ironButton.maxCount = ironInfo.count;
+            ironButton.countLabel.text = "100 iron";
+            ironLabel = ironButton.countLabel;
+            foreach (var button in ironButton.buttons)
+            {
+                button.gameObject.SetActive(false);
+            }
+            y -= yStep;
+
 
             foreach (var material in persistentData.inventoryMaterials)
             {
@@ -111,9 +123,10 @@ public class ForgeController : MonoBehaviour
                     newButton.background.color = material.Material.visualMaterial.color;
                     newButton.maxCount = material.count;
 
-                    y -= yStep;
                     dx++;
+                    y -= yStep;
                 }
+
             }
 
             firstTime = false;
@@ -131,7 +144,7 @@ public class ForgeController : MonoBehaviour
         {
             startRunPanel.gameObject.SetActive(false);
         }
-        if (Vector3.Distance(playerController.transform.position, forge.position) < minDist&&!isForging)
+        if (Vector3.Distance(playerController.transform.position, forge.position) < minDist&&!isForging&&!forged)
         {
             startForgePanel.gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.E))
@@ -150,6 +163,8 @@ public class ForgeController : MonoBehaviour
     {
         persistentData.seenIntro = true;
         introPanel.gameObject.SetActive(false);
+        templateTutorial.gameObject.SetActive(true);
+        alloyTutorial.gameObject.SetActive(true);
         worldspaceTutorial.gameObject.SetActive(true);
     }
     public void ToggleView()
@@ -167,7 +182,7 @@ public class ForgeController : MonoBehaviour
                 var inventoryMaterial = persistentData.inventoryMaterials[i];
                 if (weaponMaterial.Material == inventoryMaterial.Material)
                 {
-                    inventoryMaterial.count -= weaponMaterial.count;
+                    inventoryMaterial.count -= (int)(weaponMaterial.count*(0.25-(persistentData.equippedWeaponAttributes.recoverability*2)));
                 }
                 persistentData.inventoryMaterials[i] = inventoryMaterial;
             }

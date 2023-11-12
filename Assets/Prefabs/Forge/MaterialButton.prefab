@@ -461,6 +461,11 @@ MonoBehaviour:
   nameLabel: {fileID: 1093861467434080254}
   countLabel: {fileID: 1260401940160068769}
   background: {fileID: 6309089532712215599}
+  buttons:
+  - {fileID: 5983320513596683063}
+  - {fileID: 6108570950249560090}
+  - {fileID: 1173809427761604839}
+  - {fileID: 4290526649261467344}
   maxCount: 0
 --- !u!222 &4526552284694935276
 CanvasRenderer:
