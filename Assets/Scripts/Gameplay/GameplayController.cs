@@ -22,6 +22,9 @@ public class GameplayController : MonoBehaviour
     public float templatePickupRange;
     public float gatheringPointRange;
 
+    public GameObject textPrefab;
+    public Transform canvasTransform;
+
     private PersistentData persistentData;
     private Zone curZone;
 
@@ -102,6 +105,16 @@ public class GameplayController : MonoBehaviour
         }
     }
 
+    public void DisplayText(string text, Color color, float displayLength, GameObject targetObject)
+    {
+        var textGameObject = Instantiate(textPrefab, canvasTransform);
+        var worldLabel = textGameObject.GetComponent<WorldLabel>();
+        worldLabel.textString = text;
+        worldLabel.textColor = color;
+        worldLabel.displayLength = displayLength;
+        worldLabel.targetObject = targetObject;
+    }
+
     private bool CanLeaveRoom()
     {
         // Don't allow to proceed if there is a spawned template
@@ -133,6 +146,7 @@ public class GameplayController : MonoBehaviour
         
         if (unlockableTemplates.Count == 0)
         {
+            Destroy(spawnable);
             return;
         }
 
@@ -149,6 +163,9 @@ public class GameplayController : MonoBehaviour
             }
         }
 
+        DisplayText("Unlocked template: " + persistentData.weaponTemplates[indexToUnlock].weaponTemplate.templateName, 
+            Color.green, 4f, player.gameObject);
+
         persistentData.weaponTemplates[indexToUnlock].unlocked = true;
 
         Destroy(spawnable);
@@ -163,6 +180,9 @@ public class GameplayController : MonoBehaviour
             {
                 persistentData.AddMaterial(gatheringPoint.material, numGathered);
             }
+
+            var materialName = persistentData.GetMaterialName(gatheringPoint.material);
+            DisplayText("+ " + numGathered + " " + materialName, numGathered > 0 ? Color.blue : Color.yellow, 3f, player.gameObject);
         }
     }
 
@@ -191,7 +211,7 @@ public class GameplayController : MonoBehaviour
         }
         spawnedList.Clear();
 
-        var roomType = curZone.GetRoomType();
+        var roomType = curZone.GetRoomType(persistentData);
 
         if (roomType == Zone.RoomType.ZoneBoss)
         {
