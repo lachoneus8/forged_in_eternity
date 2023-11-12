@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialName: Air Mithril
   materialType: 7
-  damage: 3
-  speed: 4
-  defense: 3
-  recoverability: 3
+  damage: 6
+  speed: 8
+  defense: 6
+  recoverability: 6
   visualMaterial: {fileID: 2100000, guid: abbdbb26ee2368044905a63ed5e985e2, type: 2}

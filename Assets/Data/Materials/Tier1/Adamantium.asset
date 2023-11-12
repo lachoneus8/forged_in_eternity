@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialName: Adamantium
   materialType: 4
-  damage: 2
-  speed: 2
-  defense: 3
-  recoverability: 2
+  damage: 4
+  speed: 4
+  defense: 6
+  recoverability: 4
   visualMaterial: {fileID: 2100000, guid: b28540d6ea8a9dd418175fe01993d565, type: 2}

@@ -611,30 +611,39 @@ MonoBehaviour:
   - roomType: 9
     spawnablePrefabs:
     - {fileID: 5336187811655193194, guid: 7f7d54f044b705349abbdf8435b1bbc2, type: 3}
+    - {fileID: 7746443498530892722, guid: 754224f79d923874d909ad0ff71625a5, type: 3}
   - roomType: 9
     spawnablePrefabs:
     - {fileID: 2406625093602226942, guid: 0ba015178ccdf2a4aa219e632789d258, type: 3}
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
   - roomType: 9
     spawnablePrefabs:
     - {fileID: 2848845401635817583, guid: 0727e555545d8d64987b26054d7f6173, type: 3}
+    - {fileID: 7746443498530892722, guid: 754224f79d923874d909ad0ff71625a5, type: 3}
   - roomType: 9
     spawnablePrefabs:
     - {fileID: 1914197791832555769, guid: f3e7a512c7507ee4ea30f81ee68805d5, type: 3}
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
   - roomType: 8
     spawnablePrefabs:
     - {fileID: 266597795172780180, guid: 7837a6eb8b6c48f4fbd7aa5399f533c2, type: 3}
+    - {fileID: 3968851517824815660, guid: 9b30486bb9365f24fae21ba51835ae9e, type: 3}
   - roomType: 10
     spawnablePrefabs:
     - {fileID: 1950232209825317906, guid: 2ae1ba2757fb5c84e90d93f229e10842, type: 3}
+    - {fileID: 7148177626509040538, guid: f22fbc5d73cd858419b1795eface9145, type: 3}
   - roomType: 10
     spawnablePrefabs:
     - {fileID: 2989901223125728043, guid: dffb024629124d14189527feb7174456, type: 3}
+    - {fileID: 3968851517824815660, guid: 9b30486bb9365f24fae21ba51835ae9e, type: 3}
   - roomType: 10
     spawnablePrefabs:
     - {fileID: 638865896828782812, guid: 5d4df0313951ab541a4e78ee1ff11f22, type: 3}
+    - {fileID: 3968851517824815660, guid: 9b30486bb9365f24fae21ba51835ae9e, type: 3}
   - roomType: 10
     spawnablePrefabs:
     - {fileID: 2232578938371462663, guid: 8204d62bcfa20e14ca28e20ced736505, type: 3}
+    - {fileID: 7148177626509040538, guid: f22fbc5d73cd858419b1795eface9145, type: 3}
   - roomType: 0
     spawnablePrefabs:
     - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialName: Fire Draconium
   materialType: 6
-  damage: 4
-  speed: 3
-  defense: 3
-  recoverability: 3
+  damage: 8
+  speed: 6
+  defense: 6
+  recoverability: 6
   visualMaterial: {fileID: 2100000, guid: 70d74832fe15b6e4faa4377c3e7608d3, type: 2}

@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Steel
   m_EditorClassIdentifier: 
   materialName: Steel
-  damage: 2
-  speed: 2
-  defense: 2
-  recoverability: 2
+  materialType: 0
+  damage: 4
+  speed: 4
+  defense: 4
+  recoverability: 4
   visualMaterial: {fileID: 2100000, guid: f2eb62ac27db1dd48a19990f7b60fb84, type: 2}
