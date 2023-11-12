@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Adamantium
   m_EditorClassIdentifier: 
   materialName: Adamantium
+  materialType: 4
   damage: 2
   speed: 2
   defense: 3

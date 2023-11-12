@@ -54,10 +54,11 @@ public class PersistentData : MonoBehaviour
         fireDraconium,
         airMithril,
         waterAquanite,
-        earthAdamantium
+        earthAdamantium,
+        iron
     }
     [Serializable]
-    public struct InventoryMaterial
+    public class InventoryMaterial
     {
         public MaterialInfo Material;
         public int count;
@@ -68,7 +69,7 @@ public class PersistentData : MonoBehaviour
         }
     }
     [Serializable]
-    public struct PlayerWeaponTemplate
+    public class PlayerWeaponTemplate
     {
         public bool unlocked;
         public WeaponTemplateInfo weaponTemplate;
@@ -77,5 +78,17 @@ public class PersistentData : MonoBehaviour
     public void PlayerDamage(float damage)
     {
         health -= damage * (1 - equippedWeaponAttributes.defense);
+    }
+
+    public void AddMaterial(Material materialType, int numGathered)
+    {
+        foreach (var material in inventoryMaterials)
+        {
+            if (material.Material.materialType == materialType)
+            {
+                material.count += numGathered;
+                break;
+            }
+        }
     }
 }

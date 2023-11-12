@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EarthAdamantium
   m_EditorClassIdentifier: 
   materialName: Earth Adamantium
+  materialType: 9
   damage: 3
   speed: 3
   defense: 4

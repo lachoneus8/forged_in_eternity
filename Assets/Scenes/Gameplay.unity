@@ -636,6 +636,8 @@ MonoBehaviour:
     width: 18
     height: 18
   spawnableParent: {fileID: 61934070}
+  templatePickupRange: 2
+  gatheringPointRange: 2
 --- !u!4 &1029356704
 Transform:
   m_ObjectHideFlags: 0

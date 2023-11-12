@@ -18,6 +18,9 @@ public class GameplayController : MonoBehaviour
 
     public Transform spawnableParent;
 
+    public float templatePickupRange;
+    public float gatheringPointRange;
+
     private PersistentData persistentData;
     private Zone curZone;
 
@@ -51,12 +54,114 @@ public class GameplayController : MonoBehaviour
         }
 
         var diff = curRoom.exitPoint.transform.position - player.transform.position;
-        if (diff.magnitude < distanceToExit)
+        if (diff.magnitude < distanceToExit && CanLeaveRoom())
         {
             player.skipUpdate = true;
 
             ChangeRoom();
             return;
+        }
+
+        bool hasEnemies = false;
+        GatheringPoint gatheringPointNearby = null;
+
+        foreach (var spawnable in spawnedList)
+        {
+            if (spawnable == null)
+            {
+                continue;
+            }
+
+            // If player is close to template, pick it up
+            if (spawnable.GetComponent<Template>() != null)
+            {
+                var templateDiff = spawnable.transform.position - player.transform.position;
+                if (templateDiff.magnitude < templatePickupRange)
+                {
+                    PickupTemplate(spawnable);
+                }
+            }
+            else if (spawnable.GetComponent<GatheringPoint>() != null)
+            {
+                var gatheringPointDiff = spawnable.transform.position - player.transform.position;
+                if (gatheringPointDiff.magnitude < gatheringPointRange)
+                {
+                    gatheringPointNearby = spawnable.GetComponent<GatheringPoint>();
+                }
+            }
+            else if (spawnable.GetComponent<Enemy>() != null)
+            {
+                hasEnemies = true;
+            }
+        }
+
+        if (gatheringPointNearby != null && !hasEnemies)
+        {
+            HandleGathering(gatheringPointNearby);
+        }
+    }
+
+    private bool CanLeaveRoom()
+    {
+        // Don't allow to proceed if there is a spawned template
+        foreach (var spawned in spawnedList)
+        {
+            if (spawned != null)
+            {
+                var template = spawned.GetComponent<Template>();
+                if (template != null)
+                {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    private void PickupTemplate(GameObject spawnable)
+    {
+        var unlockableTemplates = new List<PersistentData.WeaponTemplate>();
+        foreach (var weaponTemplate in persistentData.weaponTemplates)
+        {
+            if (!weaponTemplate.unlocked)
+            {
+                unlockableTemplates.Add(weaponTemplate.weaponTemplate.weaponType);
+            }
+        }
+        
+        if (unlockableTemplates.Count == 0)
+        {
+            return;
+        }
+
+        var unlockableIndex = UnityEngine.Random.Range(0, unlockableTemplates.Count);
+        var unlockedType = unlockableTemplates[unlockableIndex];
+
+        int indexToUnlock = -1;
+        for (int i = 0; i < persistentData.weaponTemplates.Count; ++i)
+        {
+            if (persistentData.weaponTemplates[i].weaponTemplate.weaponType == unlockedType)
+            {
+                indexToUnlock = i;
+                break;
+            }
+        }
+
+        persistentData.weaponTemplates[indexToUnlock].unlocked = true;
+
+        Destroy(spawnable);
+    }
+
+    private void HandleGathering(GatheringPoint gatheringPoint)
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            int numGathered = gatheringPoint.HandleHit();
+            if (numGathered > 0)
+            {
+                persistentData.AddMaterial(gatheringPoint.material, numGathered);
+            }
         }
     }
 
@@ -76,6 +181,15 @@ public class GameplayController : MonoBehaviour
 
     private void ChangeRoom()
     {
+        foreach (var spawned in spawnedList)
+        {
+            if (spawned != null)
+            {
+                Destroy(spawned.gameObject);
+            }
+        }
+        spawnedList.Clear();
+
         var roomType = curZone.GetRoomType();
         Debug.Log("New room: " + roomType.ToString());
 
