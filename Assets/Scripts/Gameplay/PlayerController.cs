@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void HandleAttack(PersistentData persistentData, Enemy enemy, GameplayController gameplayController)
+    public void HandleAttack(PersistentData persistentData, GameObject enemy)
     {
         if (attackCooldown <= 0f && Input.GetMouseButtonDown(0))
         {
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
             boss.health -= damage;
 
             attackCooldown = 1f + (1f - persistentData.GetSpeed() * .1f) * 3f;
-            gameplayController.DisplayText("- " + damage + " HP", Color.red, 2f, enemy.gameObject);
+            CommonUI.DisplayText("- " + damage + " HP", Color.red, 2f, enemy.gameObject);
         }
     }
 

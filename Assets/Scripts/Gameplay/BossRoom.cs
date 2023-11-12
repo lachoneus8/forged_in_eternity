@@ -8,7 +8,11 @@ public class BossRoom : MonoBehaviour
 {
     public Image victoryPanel;
     public Zone.ZoneChoice nextZone;
-    PersistentData persistent;
+    public PlayerController playerController;
+    public Boss boss;
+    
+    private PersistentData persistent;
+
     private void Start()
     {
         persistent = FindObjectOfType<PersistentData>();
@@ -29,5 +33,15 @@ public class BossRoom : MonoBehaviour
         {
             SceneManager.LoadScene("Credits");
         }
+    }
+
+    private void Update()
+    {
+        if (persistent.health <= 0f)
+        {
+            return;
+        }
+
+        playerController.HandleAttack(persistent, boss.gameObject);
     }
 }

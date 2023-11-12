@@ -25,22 +25,10 @@ public class GameplayController : MonoBehaviour
     public float gatheringPointRange;
     public float attackRange;
 
-    public GameObject textPrefab;
-    public Transform canvasTransform;
-
-    public TMP_Text damageText;
-    public TMP_Text speedText;
-    public TMP_Text defenseText;
-    public TMP_Text recoverText;
-
-    public TMP_Text healthText;
-
     private PersistentData persistentData;
     private Zone curZone;
 
     private List<GameObject> spawnedList = new List<GameObject>();
-
-    private float gameOverTimer = 3f;
 
     private bool firstUpdate = true;
 
@@ -70,25 +58,13 @@ public class GameplayController : MonoBehaviour
         if (firstUpdate)
         {
             curZone = GetZone(persistentData.curZone);
-            damageText.text += " " + persistentData.GetDamage();
-            speedText.text += " " + persistentData.GetSpeed();
-            defenseText.text += " " + persistentData.GetDefense();
-            recoverText.text += " " + persistentData.GetRecover();
             firstUpdate = false;
         }
 
         if (persistentData.health <= 0f)
         {
-            gameOverTimer -= Time.deltaTime;
-
-            if (gameOverTimer < 0f)
-            {
-                SceneManager.LoadScene("Forge");
-            }
             return;
         }
-
-        healthText.text = "Health: " + persistentData.health + "/100";
 
         var diff = curRoom.exitPoint.transform.position - player.transform.position;
         if (diff.magnitude < distanceToExit && CanLeaveRoom())
@@ -147,18 +123,8 @@ public class GameplayController : MonoBehaviour
         }
         else if (nearestEnemyInReach != null)
         {
-            player.HandleAttack(persistentData, nearestEnemyInReach, this);
+            player.HandleAttack(persistentData, nearestEnemyInReach.gameObject);
         }
-    }
-
-    public void DisplayText(string text, Color color, float displayLength, GameObject targetObject)
-    {
-        var textGameObject = Instantiate(textPrefab, canvasTransform);
-        var worldLabel = textGameObject.GetComponent<WorldLabel>();
-        worldLabel.textString = text;
-        worldLabel.textColor = color;
-        worldLabel.displayLength = displayLength;
-        worldLabel.targetObject = targetObject;
     }
 
     private bool CanLeaveRoom()
@@ -209,7 +175,7 @@ public class GameplayController : MonoBehaviour
             }
         }
 
-        DisplayText("Unlocked template: " + persistentData.weaponTemplates[indexToUnlock].weaponTemplate.templateName, 
+        CommonUI.DisplayText("Unlocked template: " + persistentData.weaponTemplates[indexToUnlock].weaponTemplate.templateName, 
             Color.green, 4f, player.gameObject);
 
         persistentData.weaponTemplates[indexToUnlock].unlocked = true;
@@ -228,7 +194,7 @@ public class GameplayController : MonoBehaviour
             }
 
             var materialName = persistentData.GetMaterialName(gatheringPoint.material);
-            DisplayText("+ " + numGathered + " " + materialName, numGathered > 0 ? Color.blue : Color.yellow, 3f, player.gameObject);
+            CommonUI.DisplayText("+ " + numGathered + " " + materialName, numGathered > 0 ? Color.blue : Color.yellow, 3f, player.gameObject);
         }
     }
 
@@ -333,7 +299,7 @@ public class GameplayController : MonoBehaviour
             ASpawnable spawnable = spawnedGameObject.GetComponent<Template>();
             if (spawnable == null) spawnable = spawnedGameObject.GetComponent<GatheringPoint>();
             if (spawnable == null) spawnable = spawnedGameObject.GetComponent<Enemy>();
-            DisplayText(spawnable.GetSpawnText(), spawnable.GetSpawnTextColor(), 5f, spawnedGameObject);
+            CommonUI.DisplayText(spawnable.GetSpawnText(), spawnable.GetSpawnTextColor(), 5f, spawnedGameObject);
 
             spawnedList.Add(spawnedGameObject);
         }

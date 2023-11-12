@@ -79,7 +79,7 @@ public class PersistentData : MonoBehaviour
 
     public void PlayerDamage(float damage)
     {
-        health -= damage * (1 - equippedWeaponAttributes.defense * .2f);
+        health -= damage * (1 - GetDefense() * .1f);
     }
 
     public void AddMaterial(Material materialType, int numGathered)
