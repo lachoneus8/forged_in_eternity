@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Terrain;
 
 public class PersistentData : MonoBehaviour
 {
@@ -90,5 +91,17 @@ public class PersistentData : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public string GetMaterialName(Material materialType)
+    {
+        foreach (var material in inventoryMaterials)
+        {
+            if (material.Material.materialType == materialType)
+            {
+                return material.Material.materialName;
+            }
+        }
+        return "";
     }
 }
