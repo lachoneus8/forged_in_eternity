@@ -9,4 +9,9 @@ public class WeaponTemplateInfo : ScriptableObject
     public string description;
     public PersistentData.WeaponTemplate weaponType;
     public GameObject model;
+    public float baseDamage;
+    public float baseDefense;
+    public float baseSpeed;
+    public float baseRecoverability;
+
 }
