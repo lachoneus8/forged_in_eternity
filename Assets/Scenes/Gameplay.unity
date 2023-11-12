@@ -979,6 +979,7 @@ MonoBehaviour:
   spawnableParent: {fileID: 61934070}
   templatePickupRange: 2
   gatheringPointRange: 2
+  attackRange: 2
   textPrefab: {fileID: 1393244408909047086, guid: 94e685291e3fa724cb0fdc98ae10f1f5, type: 3}
   canvasTransform: {fileID: 1263357230}
   damageText: {fileID: 1734491496}

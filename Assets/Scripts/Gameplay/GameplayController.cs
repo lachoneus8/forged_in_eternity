@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,7 @@ public class GameplayController : MonoBehaviour
 
     public float templatePickupRange;
     public float gatheringPointRange;
+    public float attackRange;
 
     public GameObject textPrefab;
     public Transform canvasTransform;
@@ -35,6 +37,8 @@ public class GameplayController : MonoBehaviour
     private Zone curZone;
 
     private List<GameObject> spawnedList = new List<GameObject>();
+
+    private float attackCooldown = 0f;
 
     [Serializable]
     public struct SpawnRecord
@@ -76,8 +80,20 @@ public class GameplayController : MonoBehaviour
             return;
         }
 
+        if (attackCooldown > 0f)
+        {
+            attackCooldown -= Time.deltaTime;
+            if (attackCooldown < 0f)
+            {
+                attackCooldown = 0f;
+            }
+            return;
+        }
+
         bool hasEnemies = false;
         GatheringPoint gatheringPointNearby = null;
+        Enemy nearestEnemyInReach = null;
+        float closestEnemyDistance = float.MaxValue;
 
         foreach (var spawnable in spawnedList)
         {
@@ -106,12 +122,23 @@ public class GameplayController : MonoBehaviour
             else if (spawnable.GetComponent<Enemy>() != null)
             {
                 hasEnemies = true;
+
+                var enemyDiff = spawnable.transform.position - player.transform.position;
+                if (enemyDiff.magnitude < attackRange && enemyDiff.magnitude < closestEnemyDistance)
+                {
+                    closestEnemyDistance = enemyDiff.magnitude;
+                    nearestEnemyInReach = spawnable.GetComponent<Enemy>();
+                }
             }
         }
 
         if (gatheringPointNearby != null && !hasEnemies)
         {
             HandleGathering(gatheringPointNearby);
+        }
+        else if (nearestEnemyInReach != null)
+        {
+            HandleAttack(nearestEnemyInReach);
         }
     }
 
@@ -193,6 +220,19 @@ public class GameplayController : MonoBehaviour
 
             var materialName = persistentData.GetMaterialName(gatheringPoint.material);
             DisplayText("+ " + numGathered + " " + materialName, numGathered > 0 ? Color.blue : Color.yellow, 3f, player.gameObject);
+        }
+    }
+
+    private void HandleAttack(Enemy enemy)
+    {
+        if (attackCooldown <= 0f && Input.GetMouseButtonDown(0))
+        {
+            float damage = 5f + persistentData.GetDamage();
+            var boss = enemy.GetComponent<Boss>();
+            boss.health -= damage;
+
+            attackCooldown = 1f + (1f - persistentData.GetSpeed() * .1f) * 3f;
+            DisplayText("- " + damage + " HP", Color.red, 2f, enemy.gameObject);
         }
     }
 
