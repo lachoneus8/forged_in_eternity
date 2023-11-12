@@ -15,6 +15,13 @@ public class GameplayController : MonoBehaviour
     private PersistentData persistentData;
     private Zone curZone;
 
+    [Serializable]
+    private struct SpawnRecord
+    {
+        public Zone.RoomType roomType;
+        //public List<ASpawnable> spawnables;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +45,8 @@ public class GameplayController : MonoBehaviour
         var diff = curRoom.exitPoint.transform.position - player.transform.position;
         if (diff.magnitude < distanceToExit)
         {
+            player.skipUpdate = true;
+
             ChangeRoom();
             return;
         }
@@ -79,5 +88,7 @@ public class GameplayController : MonoBehaviour
         curRoom = Instantiate(newRoom).GetComponent<Room>();
 
         player.transform.position = curRoom.entryPoint.transform.position;
+        player.skipUpdate = true;
+        player.controller.enabled = false;
     }
 }

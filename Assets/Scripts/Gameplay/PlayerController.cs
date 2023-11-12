@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     public int groundLayer;
     public float playerSpeed = 2.0f;
 
+    public bool skipUpdate = false;
+
     private int layerAsMask;
 
     // Start is called before the first frame update
@@ -20,6 +22,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (skipUpdate)
+        {
+            skipUpdate = false;
+            return;
+        }
+
+        controller.enabled = true;
+
         Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         controller.Move(move * Time.deltaTime * playerSpeed);
 
