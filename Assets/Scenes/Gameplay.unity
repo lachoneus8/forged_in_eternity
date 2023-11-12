@@ -967,8 +967,8 @@ MonoBehaviour:
   zoneChoice: 0
   roomsBeforeMiniBoss: 000000000600000007000000
   roomsAfterMiniBoss: 010000000600000007000000
-  numRoomsBeforeMiniBoss: 0
-  numRoomsBeforeBoss: 0
+  numRoomsBeforeMiniBoss: 3
+  numRoomsBeforeBoss: 7
 --- !u!1 &1963288163
 GameObject:
   m_ObjectHideFlags: 0

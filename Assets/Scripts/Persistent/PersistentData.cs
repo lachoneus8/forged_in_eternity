@@ -104,4 +104,17 @@ public class PersistentData : MonoBehaviour
         }
         return "";
     }
+
+    public int GetTemplatesLocked()
+    {
+        int lockedCount = 0;
+        foreach (var template in weaponTemplates)
+        {
+            if (!template.unlocked)
+            {
+                lockedCount++;
+            }
+        }
+        return lockedCount;
+    }
 }

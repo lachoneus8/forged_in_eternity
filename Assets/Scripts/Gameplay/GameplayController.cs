@@ -211,7 +211,7 @@ public class GameplayController : MonoBehaviour
         }
         spawnedList.Clear();
 
-        var roomType = curZone.GetRoomType();
+        var roomType = curZone.GetRoomType(persistentData);
 
         if (roomType == Zone.RoomType.ZoneBoss)
         {

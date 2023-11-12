@@ -38,19 +38,18 @@ public class Zone : MonoBehaviour
     public int numRoomsBeforeBoss;
 
     private int numRoomsCreated = 0;
-    private int numTemplatesGiven = 0;
     private bool miniBossGiven;
 
-    public RoomType GetRoomType()
+    public RoomType GetRoomType(PersistentData persistentData)
     {
         numRoomsCreated++;
-        if (!miniBossGiven && CheckForMiniBoss())
+        if (!miniBossGiven && CheckForMiniBoss(persistentData))
         {
             miniBossGiven = true;
             return RoomType.MiniBoss;
         }
 
-        if (CheckForZoneBoss())
+        if (CheckForZoneBoss(persistentData))
         {
             return RoomType.ZoneBoss;
         }
@@ -58,26 +57,21 @@ public class Zone : MonoBehaviour
         RoomType ret;
         if (miniBossGiven)
         {
-            ret = GetRandomRoomType(roomsAfterMiniBoss);
+            ret = GetRandomRoomType(persistentData, roomsAfterMiniBoss);
         }
         else
         {
-            ret = GetRandomRoomType(roomsBeforeMiniBoss);
-        }
-
-        if (ret == RoomType.Template)
-        {
-            numTemplatesGiven++;
+            ret = GetRandomRoomType(persistentData, roomsBeforeMiniBoss);
         }
 
         return ret;
     }
 
-    private bool CheckForMiniBoss()
+    private bool CheckForMiniBoss(PersistentData persistentData)
     {
         if (zoneChoice == ZoneChoice.Zone1)
         {
-            if (numTemplatesGiven == 2)
+            if (persistentData.GetTemplatesLocked() < 4 && numRoomsCreated > numRoomsBeforeMiniBoss)
             {
                 return true;
             }
@@ -93,11 +87,11 @@ public class Zone : MonoBehaviour
         return false;
     }
 
-    private bool CheckForZoneBoss()
+    private bool CheckForZoneBoss(PersistentData persistentData)
     {
         if (zoneChoice == ZoneChoice.Zone1)
         {
-            if (numTemplatesGiven == 5)
+            if (persistentData.GetTemplatesLocked() == 0 && numRoomsCreated > numRoomsBeforeBoss)
             {
                 return true;
             }
@@ -113,9 +107,18 @@ public class Zone : MonoBehaviour
         return false;
     }
 
-    private RoomType GetRandomRoomType(List<RoomType> rooms)
+    private RoomType GetRandomRoomType(PersistentData persistentData, List<RoomType> rooms)
     {
-        var roomIndex = UnityEngine.Random.Range(0, rooms.Count);
-        return rooms[roomIndex];
+        List<RoomType> legalRoomTypes = new List<RoomType>();
+        foreach (RoomType roomType in rooms)
+        {
+            if (roomType != RoomType.Template || persistentData.GetTemplatesLocked() != 0)
+            {
+                legalRoomTypes.Add(roomType);
+            }
+        }
+
+        var roomIndex = UnityEngine.Random.Range(0, legalRoomTypes.Count);
+        return legalRoomTypes[roomIndex];
     }
 }
