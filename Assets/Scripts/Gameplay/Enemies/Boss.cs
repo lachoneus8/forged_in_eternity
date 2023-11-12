@@ -16,6 +16,7 @@ public class Boss : EnemyBase
     public CharacterController characterController;
     bool isAttacking = false;
     PersistentData persistent;
+    //public Transform projectileParent;
 
     private void Start()
     {
@@ -91,8 +92,8 @@ public class Boss : EnemyBase
             if(attack.isRanged)
             {
                 var spawnPos = transform.position;
-                spawnPos.y = player.transform.position.y;
-                Projectile spawnedProjectile=Instantiate(projectile, spawnPos, transform.rotation);
+                spawnPos.y = player.transform.position.y+(attack.rangedSize/2);
+                Projectile spawnedProjectile=Instantiate(projectile, spawnPos, transform.rotation/*,projectileParent*/);
                 spawnedProjectile.speed = attack.rangedSpeed;
                 spawnedProjectile.damage = attack.damage;
                 spawnedProjectile.transform.localScale *= attack.rangedSize;
