@@ -296,7 +296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entryPoint: {fileID: 9007708215728791940}
   exitPoint: {fileID: 3960165294787362753}
-  entryDir: 3
+  entryDir: 0
   exitDir: 0
 --- !u!1 &5745510386598021147
 GameObject:

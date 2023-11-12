@@ -59,11 +59,25 @@ public class GameplayController : MonoBehaviour
 
     private void ChangeRoom()
     {
-        curZone.GetRoomType();
+        var roomType = curZone.GetRoomType();
+        Debug.Log("New room: " + roomType.ToString());
+
+        var legalList = new List<Room>();
 
         foreach (var room in roomList)
         {
-
+            if (room.entryDir == curRoom.exitDir)
+            {
+                legalList.Add(room);
+            }
         }
+
+        var roomIndex = UnityEngine.Random.Range(0, legalList.Count);
+        var newRoom = legalList[roomIndex];
+
+        Destroy(curRoom.gameObject);
+        curRoom = Instantiate(newRoom).GetComponent<Room>();
+
+        player.transform.position = curRoom.entryPoint.transform.position;
     }
 }
