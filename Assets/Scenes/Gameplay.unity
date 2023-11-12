@@ -604,6 +604,7 @@ MonoBehaviour:
   - roomType: 7
     spawnablePrefabs:
     - {fileID: 7971005364937221238, guid: 0f7bd44fa90a92a43b8988d8390a0dcd, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
   - roomType: 9
     spawnablePrefabs:
     - {fileID: 5336187811655193194, guid: 7f7d54f044b705349abbdf8435b1bbc2, type: 3}
@@ -631,6 +632,18 @@ MonoBehaviour:
   - roomType: 10
     spawnablePrefabs:
     - {fileID: 2232578938371462663, guid: 8204d62bcfa20e14ca28e20ced736505, type: 3}
+  - roomType: 0
+    spawnablePrefabs:
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+  - roomType: 0
+    spawnablePrefabs:
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 8350600639059342586, guid: 6a201f71449f0b94c941d68138359ddc, type: 3}
+  - roomType: 0
+    spawnablePrefabs:
+    - {fileID: 8350600639059342586, guid: 6a201f71449f0b94c941d68138359ddc, type: 3}
+    - {fileID: 8350600639059342586, guid: 6a201f71449f0b94c941d68138359ddc, type: 3}
   spawnAreaXZ:
     serializedVersion: 2
     x: -9

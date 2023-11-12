@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 2802282928073980603}
   - component: {fileID: 4912386252369489145}
   - component: {fileID: 4075152390253155402}
+  - component: {fileID: -6431830184437235288}
   m_Layer: 0
   m_Name: Tier0Ranged
   m_TagString: Untagged
@@ -756,7 +757,7 @@ MonoBehaviour:
     rangedSize: 0.5
     projectileColor: {r: 1, g: 1, b: 1, a: 0}
     meleeCollider: {fileID: 0}
-  cooldown: 0
+  cooldown: 3
   projectile: {fileID: 8675120210087081595, guid: 678e13bfb5c43a8459bd28f9a3560a08, type: 3}
   targetDist: 0
   defaultDist: 3
@@ -811,6 +812,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &-6431830184437235288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8350600639059342586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ef530db6b95ae4d95a031f03fcfd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomType: 0
 --- !u!1 &8659550297236134059
 GameObject:
   m_ObjectHideFlags: 0

@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 3920866346419956882}
   - component: {fileID: 1768931699955064122}
   - component: {fileID: 4329342466376470693}
+  - component: {fileID: 9048553812586096775}
   m_Layer: 0
   m_Name: Tier0Melee
   m_TagString: Untagged
@@ -438,7 +439,7 @@ MonoBehaviour:
     rangedSize: 0
     projectileColor: {r: 0, g: 0, b: 0, a: 0}
     meleeCollider: {fileID: 490937808293505430}
-  cooldown: 0
+  cooldown: 3
   projectile: {fileID: 8675120210087081595, guid: 678e13bfb5c43a8459bd28f9a3560a08, type: 3}
   targetDist: 0
   defaultDist: 0
@@ -493,6 +494,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &9048553812586096775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3635393997723701645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ef530db6b95ae4d95a031f03fcfd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomType: 0
 --- !u!1 &4774741962935652711
 GameObject:
   m_ObjectHideFlags: 0
