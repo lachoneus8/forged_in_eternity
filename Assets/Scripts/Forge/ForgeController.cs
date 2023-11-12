@@ -16,6 +16,10 @@ public class ForgeController : MonoBehaviour
     public Transform timeBox;
     public float minDist;
 
+    public Image introPanel;
+    public CanvasGroup tutorial;
+    public TextMeshPro forgeIntro;
+
     public CanvasGroup templateView;
     public WeaponButton weaponButton;
     public TextMeshProUGUI templateLabel;
@@ -56,6 +60,11 @@ public class ForgeController : MonoBehaviour
         }
         else if(firstTime)
         {
+            if(!persistentData.seenIntro)
+            {
+                introPanel.gameObject.SetActive(true);
+            }
+
             weaponMaterials = new List<PersistentData.InventoryMaterial>();
             foreach(var material in persistentData.inventoryMaterials)
             {
@@ -85,7 +94,7 @@ public class ForgeController : MonoBehaviour
             int dx = 0;
 
             var rectPos = alloyListView.localPosition;
-            alloyListView.sizeDelta = new Vector2(alloyListView.sizeDelta.x, (weaponMaterials.Count*75));
+            alloyListView.sizeDelta = new Vector2(alloyListView.sizeDelta.x, Math.Max(weaponMaterials.Count*75,75));
             //alloyListView.localPosition = new Vector3(rectPos.x, startPosY - ((startHeight - alloyListView.sizeDelta.y) * 0.5f), rectPos.z);
 
             foreach (var material in persistentData.inventoryMaterials)
@@ -134,7 +143,12 @@ public class ForgeController : MonoBehaviour
         }
     }
 
-
+    public void FinishIntro()
+    {
+        persistentData.seenIntro = true;
+        introPanel.gameObject.SetActive(false);
+        forgeIntro.gameObject.SetActive(true);
+    }
     public void ToggleView()
     {
         templateView.gameObject.SetActive(!templateView.gameObject.activeSelf);
