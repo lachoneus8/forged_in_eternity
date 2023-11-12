@@ -16,6 +16,7 @@ public class PersistentData : MonoBehaviour
     public Zone.ZoneChoice curZone = Zone.ZoneChoice.Zone1;
     public float health;
 
+    public bool seenIntro=false;
     public static PersistentData GetPersistentData()
     {
         var persistentData = FindObjectOfType<PersistentData>();
