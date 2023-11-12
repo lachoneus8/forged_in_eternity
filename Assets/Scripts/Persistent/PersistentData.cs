@@ -117,4 +117,41 @@ public class PersistentData : MonoBehaviour
         }
         return lockedCount;
     }
+
+    public PlayerWeaponTemplate GetWeapon(WeaponTemplate weaponType)
+    {
+        foreach (var weapon in weaponTemplates)
+        {
+            if (weapon.weaponTemplate.weaponType == weaponType)
+            {
+                return weapon;
+            }
+        }
+
+        return null;
+    }
+
+    public float GetDamage()
+    {
+        var weaponTemplate = GetWeapon(equippedWeapon);
+        return weaponTemplate.weaponTemplate.baseDamage + equippedWeaponAttributes.damage;
+    }
+
+    internal float GetSpeed()
+    {
+        var weaponTemplate = GetWeapon(equippedWeapon);
+        return weaponTemplate.weaponTemplate.baseSpeed + equippedWeaponAttributes.speed;
+    }
+
+    internal float GetDefense()
+    {
+        var weaponTemplate = GetWeapon(equippedWeapon);
+        return weaponTemplate.weaponTemplate.baseDefense + equippedWeaponAttributes.defense;
+    }
+
+    internal float GetRecover()
+    {
+        var weaponTemplate = GetWeapon(equippedWeapon);
+        return weaponTemplate.weaponTemplate.baseRecoverability + equippedWeaponAttributes.recoverability;
+    }
 }

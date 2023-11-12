@@ -25,7 +25,8 @@ public class Zone : MonoBehaviour
         BasicTier2, 
         SpecializedTier1,
         SpecializedTier2,
-        MiniBoss,
+        MiniBossZone1,
+        MiniBossZone2,
         ZoneBoss
     }
 
@@ -46,7 +47,7 @@ public class Zone : MonoBehaviour
         if (!miniBossGiven && CheckForMiniBoss(persistentData))
         {
             miniBossGiven = true;
-            return RoomType.MiniBoss;
+            return zoneChoice == ZoneChoice.Zone1 ? RoomType.MiniBossZone1 : RoomType.MiniBossZone2;
         }
 
         if (CheckForZoneBoss(persistentData))

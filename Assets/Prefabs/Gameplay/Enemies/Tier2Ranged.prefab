@@ -779,6 +779,7 @@ GameObject:
   - component: {fileID: 3066186943716359559}
   - component: {fileID: 2017087008808540654}
   - component: {fileID: 5844881199478518938}
+  - component: {fileID: 660127853208416744}
   m_Layer: 0
   m_Name: Tier2Ranged
   m_TagString: Untagged
@@ -894,3 +895,16 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &660127853208416744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7148177626509040538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ef530db6b95ae4d95a031f03fcfd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomType: 2
