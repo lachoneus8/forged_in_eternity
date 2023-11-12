@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameplayController : MonoBehaviour
 {
@@ -191,6 +192,21 @@ public class GameplayController : MonoBehaviour
         spawnedList.Clear();
 
         var roomType = curZone.GetRoomType();
+
+        if (roomType == Zone.RoomType.ZoneBoss)
+        {
+            switch (persistentData.curZone)
+            {
+                case Zone.ZoneChoice.Zone1:
+                    SceneManager.LoadScene("ZoneBoss 1");
+                    break;
+                case Zone.ZoneChoice.Zone2:
+                    SceneManager.LoadScene("ZoneBoss 2");
+                    break;
+            }
+            
+            return;
+        }
         Debug.Log("New room: " + roomType.ToString());
 
         var legalList = new List<Room>();
