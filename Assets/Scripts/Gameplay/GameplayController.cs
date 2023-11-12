@@ -33,12 +33,14 @@ public class GameplayController : MonoBehaviour
     public TMP_Text defenseText;
     public TMP_Text recoverText;
 
+    public TMP_Text healthText;
+
     private PersistentData persistentData;
     private Zone curZone;
 
     private List<GameObject> spawnedList = new List<GameObject>();
 
-    private float attackCooldown = 0f;
+    private float gameOverTimer = 3f;
 
     [Serializable]
     public struct SpawnRecord
@@ -71,22 +73,25 @@ public class GameplayController : MonoBehaviour
             return;
         }
 
+        if (persistentData.health <= 0f)
+        {
+            gameOverTimer -= Time.deltaTime;
+
+            if (gameOverTimer < 0f)
+            {
+                SceneManager.LoadScene("Forge");
+            }
+            return;
+        }
+
+        healthText.text = "Health: " + persistentData.health + "/100";
+
         var diff = curRoom.exitPoint.transform.position - player.transform.position;
         if (diff.magnitude < distanceToExit && CanLeaveRoom())
         {
             player.skipUpdate = true;
 
             ChangeRoom();
-            return;
-        }
-
-        if (attackCooldown > 0f)
-        {
-            attackCooldown -= Time.deltaTime;
-            if (attackCooldown < 0f)
-            {
-                attackCooldown = 0f;
-            }
             return;
         }
 
@@ -138,7 +143,7 @@ public class GameplayController : MonoBehaviour
         }
         else if (nearestEnemyInReach != null)
         {
-            HandleAttack(nearestEnemyInReach);
+            player.HandleAttack(persistentData, nearestEnemyInReach);
         }
     }
 
@@ -220,19 +225,6 @@ public class GameplayController : MonoBehaviour
 
             var materialName = persistentData.GetMaterialName(gatheringPoint.material);
             DisplayText("+ " + numGathered + " " + materialName, numGathered > 0 ? Color.blue : Color.yellow, 3f, player.gameObject);
-        }
-    }
-
-    private void HandleAttack(Enemy enemy)
-    {
-        if (attackCooldown <= 0f && Input.GetMouseButtonDown(0))
-        {
-            float damage = 5f + persistentData.GetDamage();
-            var boss = enemy.GetComponent<Boss>();
-            boss.health -= damage;
-
-            attackCooldown = 1f + (1f - persistentData.GetSpeed() * .1f) * 3f;
-            DisplayText("- " + damage + " HP", Color.red, 2f, enemy.gameObject);
         }
     }
 

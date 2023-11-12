@@ -32,7 +32,7 @@ public class WorldLabel : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        else
+        else if (targetObject != null)
         {
             var displayPos = targetObject.transform.position;
             offset += offsetIncrease * Time.deltaTime;

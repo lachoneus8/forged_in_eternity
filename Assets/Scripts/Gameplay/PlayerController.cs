@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     private int layerAsMask;
 
+    private float attackCooldown = 0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,5 +49,29 @@ public class PlayerController : MonoBehaviour
         var curRot = transform.rotation.eulerAngles.y;
         var updatedRot = new Vector3(0, curRot, 0);
         transform.rotation = Quaternion.Euler(updatedRot);
+
+        if (attackCooldown > 0f)
+        {
+            attackCooldown -= Time.deltaTime;
+            if (attackCooldown < 0f)
+            {
+                attackCooldown = 0f;
+            }
+        }
     }
+
+    public void HandleAttack(PersistentData persistentData, Enemy enemy, GameplayController gameplayController)
+    {
+        if (attackCooldown <= 0f && Input.GetMouseButtonDown(0))
+        {
+            float damage = 5f + persistentData.GetDamage();
+            var boss = enemy.GetComponent<Boss>();
+            boss.health -= damage;
+
+            attackCooldown = 1f + (1f - persistentData.GetSpeed() * .1f) * 3f;
+            gameplayController.DisplayText("- " + damage + " HP", Color.red, 2f, enemy.gameObject);
+        }
+    }
+
+
 }
