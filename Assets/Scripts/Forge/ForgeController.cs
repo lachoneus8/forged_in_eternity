@@ -17,8 +17,9 @@ public class ForgeController : MonoBehaviour
     public float minDist;
 
     public Image introPanel;
-    public CanvasGroup tutorial;
-    public TextMeshPro forgeIntro;
+    public CanvasGroup templateTutorial;
+    public CanvasGroup alloyTutorial;
+    public GameObject worldspaceTutorial;
 
     public CanvasGroup templateView;
     public WeaponButton weaponButton;
@@ -37,6 +38,8 @@ public class ForgeController : MonoBehaviour
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI defenseText;
     public TextMeshProUGUI recoverabilityText;
+
+    public Button forgeButton;
 
     public PersistentData persistentData;
     public int yStep;
@@ -64,7 +67,7 @@ public class ForgeController : MonoBehaviour
             {
                 introPanel.gameObject.SetActive(true);
             }
-
+            persistentData.health = 100;
             weaponMaterials = new List<PersistentData.InventoryMaterial>();
             foreach(var material in persistentData.inventoryMaterials)
             {
@@ -147,7 +150,7 @@ public class ForgeController : MonoBehaviour
     {
         persistentData.seenIntro = true;
         introPanel.gameObject.SetActive(false);
-        forgeIntro.gameObject.SetActive(true);
+        worldspaceTutorial.gameObject.SetActive(true);
     }
     public void ToggleView()
     {
@@ -176,11 +179,12 @@ public class ForgeController : MonoBehaviour
     }
     public void UpdateWeaponStats()
     {
+        var baseWeapon=persistentData.weaponTemplates[(int)persistentData.equippedWeapon].weaponTemplate;
         //update all attributes
-        float modifiedDamage = ironInfo.Material.damage * ironInfo.count / 100.0f;
-        float modifiedSpeed = ironInfo.Material.speed * ironInfo.count / 100.0f;
-        float modifiedRecoverability = ironInfo.Material.recoverability * ironInfo.count / 100.0f;
-        float modifiedDefense = ironInfo.Material.defense * ironInfo.count / 100.0f;
+        float modifiedDamage = baseWeapon.baseDamage+(ironInfo.Material.damage * ironInfo.count / 100.0f);
+        float modifiedSpeed = baseWeapon.baseSpeed + (ironInfo.Material.speed * ironInfo.count / 100.0f);
+        float modifiedRecoverability = baseWeapon.baseRecoverability + (ironInfo.Material.recoverability * ironInfo.count / 100.0f);
+        float modifiedDefense = baseWeapon.baseDefense + (ironInfo.Material.defense * ironInfo.count / 100.0f);
         foreach (var material in weaponMaterials)
         {
             modifiedDamage += material.Material.damage * material.count / 100.0f;

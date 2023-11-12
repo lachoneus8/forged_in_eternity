@@ -194,7 +194,7 @@ MonoBehaviour:
     recoverability: 0
   curZone: 0
   health: 100
-  seenIntro: 0
+  seenIntro: 1
 --- !u!4 &105081049
 Transform:
   m_ObjectHideFlags: 0
