@@ -193,6 +193,7 @@ MonoBehaviour:
     defense: 0
     recoverability: 0
   curZone: 0
+  health: 100
 --- !u!4 &105081049
 Transform:
   m_ObjectHideFlags: 0
