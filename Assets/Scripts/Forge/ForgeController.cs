@@ -20,8 +20,6 @@ public class ForgeController : MonoBehaviour
     public WeaponButton weaponButton;
     public TextMeshProUGUI templateLabel;
     public TextMeshProUGUI templateDescription;
-    public Transform weaponPreviewParent;
-    public MeshRenderer weaponPreview;
 
     public CanvasGroup alloyView;
     public MaterialButton materialButton;
@@ -187,17 +185,6 @@ public class ForgeController : MonoBehaviour
 
     public void UpdateVisuals()
     {
-        if (weaponPreview != null)
-        {
-            Destroy(weaponPreview.gameObject);
-        }
-        var newModel = Instantiate(persistentData.weaponTemplates[(int)persistentData.equippedWeapon].weaponTemplate.model,weaponPreviewParent);
-        weaponPreview=newModel.GetComponent<MeshRenderer>();
-        weaponPreview.material = ironInfo.Material.visualMaterial;
-        foreach (var material in weaponMaterials)
-        {
-            weaponPreview.material.Lerp(weaponPreview.material, material.Material.visualMaterial, material.count / 100.0f);
-        }
 
         damageText.text = "Damage: " + curWeaponAttributes.damage;
         speedText.text = "Speed: " + curWeaponAttributes.speed;

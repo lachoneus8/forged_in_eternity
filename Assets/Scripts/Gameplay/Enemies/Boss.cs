@@ -104,13 +104,12 @@ public class Boss : EnemyBase
                 attack.meleeCollider.gameObject.SetActive(true);
                 if (attack.meleeCollider.bounds.Intersects(player.GetComponent<Collider>().bounds))
                 {
-                    persistent.health -= attack.damage;
+                    persistent.PlayerDamage(attack.damage);
                 }
                 yield return new WaitForSeconds(0.1f);
                 attack.meleeCollider.gameObject.SetActive(false);
                 yield return new WaitForSeconds(attack.repeatDelay-0.1f);
             }
-            Debug.Log("Attack "+i);
         }
         SetColor(defaultColor);
         cooldown = attack.cooldown;
