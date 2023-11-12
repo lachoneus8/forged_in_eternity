@@ -146,6 +146,7 @@ public class GameplayController : MonoBehaviour
         
         if (unlockableTemplates.Count == 0)
         {
+            Destroy(spawnable);
             return;
         }
 
@@ -161,6 +162,9 @@ public class GameplayController : MonoBehaviour
                 break;
             }
         }
+
+        DisplayText("Unlocked template: " + persistentData.weaponTemplates[indexToUnlock].weaponTemplate.templateName, 
+            Color.green, 4f, player.gameObject);
 
         persistentData.weaponTemplates[indexToUnlock].unlocked = true;
 
