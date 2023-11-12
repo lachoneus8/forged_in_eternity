@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Boss : EnemyBase
 { 
@@ -15,6 +16,7 @@ public class Boss : EnemyBase
     public float distBuffer = 0.5f;
     public CharacterController characterController;
     bool isAttacking = false;
+    public UnityEvent deathEvent;
     PersistentData persistent;
     //public Transform projectileParent;
 
@@ -29,6 +31,12 @@ public class Boss : EnemyBase
     // Update is called once per frame
     void Update()
     {
+        if (health <= 0)
+        {
+            deathEvent.Invoke();
+            Destroy(gameObject); 
+            return;
+        }
         if (cooldown <= 0&&!isAttacking)
         {
             int newAttack=UnityEngine.Random.Range(0,attacks.Count);
