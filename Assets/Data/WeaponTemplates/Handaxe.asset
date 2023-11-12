@@ -16,3 +16,7 @@ MonoBehaviour:
   description: 
   weaponType: 5
   model: {fileID: 0}
+  baseDamage: 1
+  baseDefense: 1
+  baseSpeed: 1
+  baseRecoverability: 2
