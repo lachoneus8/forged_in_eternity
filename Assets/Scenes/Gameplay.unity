@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &61934069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 61934070}
+  m_Layer: 0
+  m_Name: Spawnables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &61934070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61934069}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &74655989 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2083784618195491850, guid: 32ec8c23eb4f94b4ab1a8c04271d266f, type: 3}
@@ -329,6 +360,7 @@ MonoBehaviour:
   controller: {fileID: 622882572}
   groundLayer: 6
   playerSpeed: 6
+  skipUpdate: 0
 --- !u!1 &630404135
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,6 +595,49 @@ MonoBehaviour:
   curRoom: {fileID: 74655989}
   player: {fileID: 622882577}
   distanceToExit: 1.5
+  spawnRecords:
+  - roomType: 6
+    spawnablePrefabs:
+    - {fileID: 2534032112163861247, guid: 90fac468ed5668b49ad334b7bd10060c, type: 3}
+  - roomType: 7
+    spawnablePrefabs:
+    - {fileID: 7971005364937221238, guid: 0f7bd44fa90a92a43b8988d8390a0dcd, type: 3}
+  - roomType: 9
+    spawnablePrefabs:
+    - {fileID: 5336187811655193194, guid: 7f7d54f044b705349abbdf8435b1bbc2, type: 3}
+  - roomType: 9
+    spawnablePrefabs:
+    - {fileID: 2406625093602226942, guid: 0ba015178ccdf2a4aa219e632789d258, type: 3}
+  - roomType: 9
+    spawnablePrefabs:
+    - {fileID: 2848845401635817583, guid: 0727e555545d8d64987b26054d7f6173, type: 3}
+  - roomType: 9
+    spawnablePrefabs:
+    - {fileID: 1914197791832555769, guid: f3e7a512c7507ee4ea30f81ee68805d5, type: 3}
+  - roomType: 8
+    spawnablePrefabs:
+    - {fileID: 266597795172780180, guid: 7837a6eb8b6c48f4fbd7aa5399f533c2, type: 3}
+  - roomType: 10
+    spawnablePrefabs:
+    - {fileID: 1950232209825317906, guid: 2ae1ba2757fb5c84e90d93f229e10842, type: 3}
+  - roomType: 10
+    spawnablePrefabs:
+    - {fileID: 2989901223125728043, guid: dffb024629124d14189527feb7174456, type: 3}
+  - roomType: 10
+    spawnablePrefabs:
+    - {fileID: 638865896828782812, guid: 5d4df0313951ab541a4e78ee1ff11f22, type: 3}
+  - roomType: 10
+    spawnablePrefabs:
+    - {fileID: 2232578938371462663, guid: 8204d62bcfa20e14ca28e20ced736505, type: 3}
+  spawnAreaXZ:
+    serializedVersion: 2
+    x: -9
+    y: -9
+    width: 18
+    height: 18
+  spawnableParent: {fileID: 61934070}
+  templatePickupRange: 2
+  gatheringPointRange: 2
 --- !u!4 &1029356704
 Transform:
   m_ObjectHideFlags: 0
@@ -664,7 +739,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1531694479}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 8, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -684,6 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 622882577}
+  zOffset: -5.5
 --- !u!1001 &1609116540
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -800,3 +876,4 @@ SceneRoots:
   - {fileID: 622882576}
   - {fileID: 1609116540}
   - {fileID: 503303739}
+  - {fileID: 61934070}

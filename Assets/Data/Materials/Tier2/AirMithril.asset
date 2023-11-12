@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AirMithril
   m_EditorClassIdentifier: 
   materialName: Air Mithril
+  materialType: 7
   damage: 3
   speed: 4
   defense: 3

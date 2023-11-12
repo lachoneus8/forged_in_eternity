@@ -6,6 +6,7 @@ using UnityEngine;
 public class MaterialInfo : ScriptableObject
 {
     public string materialName;
+    public PersistentData.Material materialType;
     public int damage;
     public int speed;
     public int defense;

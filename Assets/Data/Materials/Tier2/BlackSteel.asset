@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BlackSteel
   m_EditorClassIdentifier: 
   materialName: Blacksteel
+  materialType: 5
   damage: 3
   speed: 3
   defense: 3
