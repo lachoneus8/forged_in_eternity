@@ -45,7 +45,7 @@ public class GatheringPoint : ASpawnable
     // Start is called before the first frame update
     void Start()
     {
-        amountRemaining = UnityEngine.Random.Range(5, 10);
+        amountRemaining = UnityEngine.Random.Range(10, 20);
     }
 
 }
