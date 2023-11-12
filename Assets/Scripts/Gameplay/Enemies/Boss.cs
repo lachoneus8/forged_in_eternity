@@ -117,7 +117,7 @@ public class Boss : EnemyBase
                 attack.meleeCollider.gameObject.SetActive(true);
                 if (attack.meleeCollider.bounds.Intersects(player.GetComponent<Collider>().bounds))
                 {
-                    persistent.PlayerDamage(attack.damage);
+                    persistent.PlayerDamage(attack.damage, player.gameObject);
                 }
                 yield return new WaitForSeconds(0.1f);
                 attack.meleeCollider.gameObject.SetActive(false);

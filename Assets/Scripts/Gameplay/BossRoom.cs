@@ -42,11 +42,14 @@ public class BossRoom : MonoBehaviour
             return;
         }
 
-        var diff = boss.transform.position - playerController.transform.position;
-
-        if (diff.magnitude < 2.0f)
+        if (boss != null)
         {
-            playerController.HandleAttack(persistent, boss.gameObject);
+            var diff = boss.transform.position - playerController.transform.position;
+
+            if (diff.magnitude < 2.0f)
+            {
+                playerController.HandleAttack(persistent, boss.gameObject);
+            }
         }
     }
 }

@@ -77,9 +77,12 @@ public class PersistentData : MonoBehaviour
         public WeaponTemplateInfo weaponTemplate;
     }
 
-    public void PlayerDamage(float damage)
+    public void PlayerDamage(float damage, GameObject player)
     {
-        health -= damage * (1 - GetDefense() * .1f);
+        var damageToTake = damage * (1 - GetDefense() * .1f);
+        health -= damageToTake;
+
+        CommonUI.DisplayText("- " + damageToTake + "HP", Color.red, 3f, player);
     }
 
     public void AddMaterial(Material materialType, int numGathered)

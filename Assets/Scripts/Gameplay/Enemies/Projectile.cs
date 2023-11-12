@@ -54,7 +54,7 @@ public class Projectile : MonoBehaviour
             var player = other.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
-                persistent.PlayerDamage(damage);
+                persistent.PlayerDamage(damage, player.gameObject);
                 
             }
         }

@@ -1351,8 +1351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 622882577}
-  health: 300
-  maxHealth: 300
+  health: 150
+  maxHealth: 150
   speed: 7
   attackColor: {r: 0.0012815695, g: 0.0012815695, b: 0.33962262, a: 1}
   damagedColor: {r: 0.5566038, g: 0.27515128, b: 0.27515128, a: 1}
