@@ -527,6 +527,9 @@ MonoBehaviour:
   defaultDist: 3
   distBuffer: 0.5
   characterController: {fileID: 2659957428251894452}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &6315455089373900367
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -589,6 +592,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 1
+  tauntMessages:
+  - "You\u2019re a moving target, but I\u2019ve got all day"
+  - "You\u2019re practically begging to be skewered"
+  - Your agility is laughable!
 --- !u!1 &7187898241349641087
 GameObject:
   m_ObjectHideFlags: 0

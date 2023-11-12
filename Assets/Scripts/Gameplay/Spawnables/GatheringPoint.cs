@@ -10,6 +10,16 @@ public class GatheringPoint : ASpawnable
 
     private int gatherPerHit = 3;
 
+    public override string GetSpawnText()
+    {
+        return "Click to mine me";
+    }
+
+    public override Color GetSpawnTextColor()
+    {
+        return Color.cyan;
+    }
+
     public int HandleHit()
     {
         if (amountRemaining == 0)

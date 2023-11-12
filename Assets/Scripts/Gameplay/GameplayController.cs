@@ -42,6 +42,8 @@ public class GameplayController : MonoBehaviour
 
     private float gameOverTimer = 3f;
 
+    private bool firstUpdate = true;
+
     [Serializable]
     public struct SpawnRecord
     {
@@ -62,15 +64,17 @@ public class GameplayController : MonoBehaviour
         {
             persistentData = PersistentData.GetPersistentData();
 
-            if (persistentData != null )
-            {
-                curZone = GetZone(persistentData.curZone);
-                damageText.text += " " + persistentData.GetDamage();
-                speedText.text += " " + persistentData.GetSpeed();
-                defenseText.text += " " + persistentData.GetDefense();
-                recoverText.text += " " + persistentData.GetRecover();
-            }
             return;
+        }
+
+        if (firstUpdate)
+        {
+            curZone = GetZone(persistentData.curZone);
+            damageText.text += " " + persistentData.GetDamage();
+            speedText.text += " " + persistentData.GetSpeed();
+            defenseText.text += " " + persistentData.GetDefense();
+            recoverText.text += " " + persistentData.GetRecover();
+            firstUpdate = false;
         }
 
         if (persistentData.health <= 0f)
@@ -324,7 +328,11 @@ public class GameplayController : MonoBehaviour
             position.z = UnityEngine.Random.Range(spawnAreaXZ.yMin, spawnAreaXZ.yMax);
             position.y = prefab.transform.position.y;
 
-            spawnedList.Add(Instantiate(prefab, position, Quaternion.identity, spawnableParent));
+            var spawnedGameObject = Instantiate(prefab, position, Quaternion.identity, spawnableParent);
+            var spawnable = GetComponent<ASpawnable>();
+            DisplayText(spawnable.GetSpawnText(), spawnable.GetSpawnTextColor(), 5f, spawnedGameObject);
+
+            spawnedList.Add(spawnedGameObject);
         }
     }
 }

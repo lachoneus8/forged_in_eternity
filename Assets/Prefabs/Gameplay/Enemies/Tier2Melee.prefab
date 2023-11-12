@@ -163,6 +163,9 @@ MonoBehaviour:
   defaultDist: 0
   distBuffer: 0.5
   characterController: {fileID: 2843147643898429698}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &9213963946805958327
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -225,6 +228,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 2
+  tauntMessages:
+  - "I\u2019ve seen more threatening kittens"
+  - Your quest ends here
+  - You are puny!
 --- !u!1 &4067007861811091635
 GameObject:
   m_ObjectHideFlags: 0

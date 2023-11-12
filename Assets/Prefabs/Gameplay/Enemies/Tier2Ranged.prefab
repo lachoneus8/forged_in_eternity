@@ -846,6 +846,9 @@ MonoBehaviour:
   defaultDist: 3
   distBuffer: 0.5
   characterController: {fileID: 5844881199478518938}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &2017087008808540654
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -908,3 +911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 2
+  tauntMessages:
+  - "You\u2019re just a pebble in my path"
+  - Your agility is laughable!
+  - "You\u2019re about to experience a landslide defeat!"

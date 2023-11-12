@@ -445,6 +445,9 @@ MonoBehaviour:
   defaultDist: 0
   distBuffer: 0.5
   characterController: {fileID: 4329342466376470693}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &1768931699955064122
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -507,6 +510,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 0
+  tauntMessages:
+  - Beg for mercy!
+  - My first catch of the day!
+  - Charge!
 --- !u!1 &4774741962935652711
 GameObject:
   m_ObjectHideFlags: 0

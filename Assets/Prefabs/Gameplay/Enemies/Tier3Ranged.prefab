@@ -448,6 +448,9 @@ MonoBehaviour:
   defaultDist: 3
   distBuffer: 0.5
   characterController: {fileID: 1091420506081826054}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &896715577303047162
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -510,6 +513,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 3
+  tauntMessages:
+  - Duck and cover, little hero! My rocks fly faster than your wit
+  - "You\u2019re about to experience a landslide defeat!"
+  - Your bones will join the gravel beneath my feet
 --- !u!1 &8020746746751040819
 GameObject:
   m_ObjectHideFlags: 0

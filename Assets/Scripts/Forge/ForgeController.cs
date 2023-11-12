@@ -179,12 +179,12 @@ public class ForgeController : MonoBehaviour
     }
     public void UpdateWeaponStats()
     {
-        var baseWeapon=persistentData.weaponTemplates[(int)persistentData.equippedWeapon].weaponTemplate;
+        
         //update all attributes
-        float modifiedDamage = baseWeapon.baseDamage+(ironInfo.Material.damage * ironInfo.count / 100.0f);
-        float modifiedSpeed = baseWeapon.baseSpeed + (ironInfo.Material.speed * ironInfo.count / 100.0f);
-        float modifiedRecoverability = baseWeapon.baseRecoverability + (ironInfo.Material.recoverability * ironInfo.count / 100.0f);
-        float modifiedDefense = baseWeapon.baseDefense + (ironInfo.Material.defense * ironInfo.count / 100.0f);
+        float modifiedDamage = (ironInfo.Material.damage * ironInfo.count / 100.0f);
+        float modifiedSpeed = (ironInfo.Material.speed * ironInfo.count / 100.0f);
+        float modifiedRecoverability = (ironInfo.Material.recoverability * ironInfo.count / 100.0f);
+        float modifiedDefense = (ironInfo.Material.defense * ironInfo.count / 100.0f);
         foreach (var material in weaponMaterials)
         {
             modifiedDamage += material.Material.damage * material.count / 100.0f;
@@ -203,10 +203,11 @@ public class ForgeController : MonoBehaviour
 
     public void UpdateVisuals()
     {
+        var baseWeapon = persistentData.weaponTemplates[(int)persistentData.equippedWeapon].weaponTemplate;
 
-        damageText.text = "Damage: " + curWeaponAttributes.damage;
-        speedText.text = "Speed: " + curWeaponAttributes.speed;
-        defenseText.text = "Defense: " + curWeaponAttributes.defense;
-        recoverabilityText.text = "Recoverability: " + curWeaponAttributes.recoverability;
+        damageText.text = "Damage: " + baseWeapon.baseDamage + " + " + curWeaponAttributes.damage;
+        speedText.text = "Speed: " + baseWeapon.baseSpeed + " + " + curWeaponAttributes.speed;
+        defenseText.text = "Defense: " + baseWeapon.baseDefense + " + " + curWeaponAttributes.defense;
+        recoverabilityText.text = "Recoverability: " + baseWeapon.baseRecoverability + " + " + curWeaponAttributes.recoverability;
     }
 }

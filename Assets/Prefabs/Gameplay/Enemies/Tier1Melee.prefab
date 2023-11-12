@@ -651,6 +651,9 @@ MonoBehaviour:
   defaultDist: 0
   distBuffer: 0.5
   characterController: {fileID: 4313133936415117086}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &7061554432584339203
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -713,6 +716,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 1
+  tauntMessages:
+  - You are puny!
+  - Your fate is sealed
+  - Charge!
 --- !u!1 &7838749525638664631
 GameObject:
   m_ObjectHideFlags: 0

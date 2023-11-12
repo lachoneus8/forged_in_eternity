@@ -734,6 +734,9 @@ MonoBehaviour:
   defaultDist: 0
   distBuffer: 0.5
   characterController: {fileID: 4064827425522808032}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &3669726361878900015
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -796,6 +799,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 3
+  tauntMessages:
+  - Prepare for oblivion!
+  - Your quest ends here
+  - I will crush you under the weight of my fury
 --- !u!1 &8860011683681366107
 GameObject:
   m_ObjectHideFlags: 0

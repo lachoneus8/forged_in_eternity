@@ -381,6 +381,9 @@ MonoBehaviour:
   defaultDist: 0
   distBuffer: 0.5
   characterController: {fileID: 5048891424360861468}
+  deathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &3838049494411890997
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -443,6 +446,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomType: 0
+  tauntMessages:
+  - "You\u2019re like a candle in a storm\u2014flickering and doomed"
+  - Conquerering these parallel worlds becomes easier with each of you blacksmiths
+    smashed
+  - Oh, look! The brave warrior thinks they can close the gap. Adorable
 --- !u!1 &4102399606063961255
 GameObject:
   m_ObjectHideFlags: 0
