@@ -143,7 +143,7 @@ public class GameplayController : MonoBehaviour
         }
         else if (nearestEnemyInReach != null)
         {
-            player.HandleAttack(persistentData, nearestEnemyInReach);
+            player.HandleAttack(persistentData, nearestEnemyInReach, this);
         }
     }
 
