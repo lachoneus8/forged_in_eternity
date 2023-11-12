@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public bool skipUpdate = false;
 
+    public float health;
+
     private int layerAsMask;
 
     // Start is called before the first frame update

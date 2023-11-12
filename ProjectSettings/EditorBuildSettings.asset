@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Persistent.unity
     guid: cd63163e2bdda37478983123d14007ac
+  - enabled: 1
+    path: Assets/Scenes/Zone1Boss.unity
+    guid: d0febb2d10b77034dbea5012b08eeafb
   m_configObjects: {}
