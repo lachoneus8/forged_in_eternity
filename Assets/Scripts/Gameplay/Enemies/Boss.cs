@@ -21,6 +21,10 @@ public class Boss : EnemyBase
     private void Start()
     {
         persistent = FindObjectOfType<PersistentData>();
+        if (player == null)
+        {
+            player = FindObjectOfType<PlayerController>();
+        }
     }
     // Update is called once per frame
     void Update()
@@ -35,8 +39,8 @@ public class Boss : EnemyBase
             cooldown -= Time.deltaTime;
         }
 
-        LookAtPlayer(turnSpeed*Time.deltaTime);
-        if(Vector3.Distance(transform.position, player.transform.position) > targetDist+distBuffer)
+        bool move=LookAtPlayer(turnSpeed*Time.deltaTime);
+        if(Vector3.Distance(transform.position, player.transform.position) > targetDist+distBuffer&&move)
         {
             characterController.Move(speed*transform.forward*Time.deltaTime);
         }
