@@ -10,10 +10,10 @@ public class EnemyBase : MonoBehaviour
     public float health;
     public float maxHealth;
     public float speed;
-    public Collider attackCollider;
     public Color attackColor=new Color(0f,0f,1f,1f);
     public Color damagedColor = new Color(1f, 0f, 0f, 1f);
     public Color defaultColor = new Color(1f, 1f, 1f, 1f);
+    public float turnSpeed;
 
     protected void SetColor(Color color)
     {
@@ -23,7 +23,13 @@ public class EnemyBase : MonoBehaviour
             renderer.material.color = color;
         }
     }
-
+    protected void LookAtPlayer(float maxSpeed)
+    {
+        Quaternion curRot = transform.rotation;
+        transform.LookAt(player.transform);
+        transform.rotation = Quaternion.RotateTowards(curRot, transform.rotation, maxSpeed);
+        transform.rotation = Quaternion.Euler(new Vector3(curRot.x, transform.rotation.eulerAngles.y, curRot.z));
+    }
     IEnumerator DamageColor()
     {
         SetColor(damagedColor); 
