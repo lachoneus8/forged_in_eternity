@@ -910,6 +910,66 @@ MonoBehaviour:
     spawnablePrefabs:
     - {fileID: 8350600639059342586, guid: 6a201f71449f0b94c941d68138359ddc, type: 3}
     - {fileID: 8350600639059342586, guid: 6a201f71449f0b94c941d68138359ddc, type: 3}
+  - roomType: 1
+    spawnablePrefabs:
+    - {fileID: 7746443498530892722, guid: 754224f79d923874d909ad0ff71625a5, type: 3}
+    - {fileID: 7746443498530892722, guid: 754224f79d923874d909ad0ff71625a5, type: 3}
+  - roomType: 1
+    spawnablePrefabs:
+    - {fileID: 7746443498530892722, guid: 754224f79d923874d909ad0ff71625a5, type: 3}
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
+  - roomType: 1
+    spawnablePrefabs:
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
+  - roomType: 2
+    spawnablePrefabs:
+    - {fileID: 3968851517824815660, guid: 9b30486bb9365f24fae21ba51835ae9e, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 8350600639059342586, guid: 6a201f71449f0b94c941d68138359ddc, type: 3}
+  - roomType: 2
+    spawnablePrefabs:
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 7148177626509040538, guid: f22fbc5d73cd858419b1795eface9145, type: 3}
+  - roomType: 2
+    spawnablePrefabs:
+    - {fileID: 7746443498530892722, guid: 754224f79d923874d909ad0ff71625a5, type: 3}
+    - {fileID: 7746443498530892722, guid: 754224f79d923874d909ad0ff71625a5, type: 3}
+    - {fileID: 7746443498530892722, guid: 754224f79d923874d909ad0ff71625a5, type: 3}
+  - roomType: 3
+    spawnablePrefabs:
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+  - roomType: 3
+    spawnablePrefabs:
+    - {fileID: 7025420705425685464, guid: aead57903268e2945b148a05c18615c1, type: 3}
+    - {fileID: 7025420705425685464, guid: aead57903268e2945b148a05c18615c1, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+  - roomType: 3
+    spawnablePrefabs:
+    - {fileID: 8739021600792107975, guid: c47d86a319a5bdc47912c17c65a676d4, type: 3}
+    - {fileID: 8739021600792107975, guid: c47d86a319a5bdc47912c17c65a676d4, type: 3}
+    - {fileID: 8350600639059342586, guid: 6a201f71449f0b94c941d68138359ddc, type: 3}
+  - roomType: 3
+    spawnablePrefabs:
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
+  - roomType: 11
+    spawnablePrefabs:
+    - {fileID: 2748071601008563066, guid: fe3ff0e4a70cd084f9e4bcf06689ce84, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+  - roomType: 12
+    spawnablePrefabs:
+    - {fileID: 2748071601008563066, guid: 50408b4f4e0a0da42a44f9d2b111b91c, type: 3}
+    - {fileID: 3635393997723701645, guid: 23f7751d1c16db342b40d5de468091b6, type: 3}
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
+    - {fileID: 7038989864718694325, guid: 3e719bdde1d2b1644bf157f716a24464, type: 3}
   spawnAreaXZ:
     serializedVersion: 2
     x: -9
