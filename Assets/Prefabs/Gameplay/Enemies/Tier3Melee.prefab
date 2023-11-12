@@ -666,6 +666,7 @@ GameObject:
   - component: {fileID: 458276192508092203}
   - component: {fileID: 3669726361878900015}
   - component: {fileID: 4064827425522808032}
+  - component: {fileID: -1822929513224634293}
   m_Layer: 0
   m_Name: Tier3Melee
   m_TagString: Untagged
@@ -782,6 +783,19 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.85, z: 0}
+--- !u!114 &-1822929513224634293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8739021600792107975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ef530db6b95ae4d95a031f03fcfd0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roomType: 3
 --- !u!1 &8860011683681366107
 GameObject:
   m_ObjectHideFlags: 0

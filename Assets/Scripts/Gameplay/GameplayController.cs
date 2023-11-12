@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -24,6 +25,11 @@ public class GameplayController : MonoBehaviour
 
     public GameObject textPrefab;
     public Transform canvasTransform;
+
+    public TMP_Text damageText;
+    public TMP_Text speedText;
+    public TMP_Text defenseText;
+    public TMP_Text recoverText;
 
     private PersistentData persistentData;
     private Zone curZone;
@@ -53,6 +59,10 @@ public class GameplayController : MonoBehaviour
             if (persistentData != null )
             {
                 curZone = GetZone(persistentData.curZone);
+                damageText.text += " " + persistentData.GetDamage();
+                speedText.text += " " + persistentData.GetSpeed();
+                defenseText.text += " " + persistentData.GetDefense();
+                recoverText.text += " " + persistentData.GetRecover();
             }
             return;
         }
