@@ -45,8 +45,8 @@ public class BossRoom : MonoBehaviour
         if (boss != null)
         {
             var diff = boss.transform.position - playerController.transform.position;
-
-            if (diff.magnitude < 2.0f)
+            Debug.Log(diff.magnitude.ToString());
+            if (diff.magnitude < 3.0f)
             {
                 playerController.HandleAttack(persistent, boss.gameObject);
             }
